@@ -94,11 +94,11 @@ class OidcProviderSettings
      *
      * @throws OidcIssuerDiscoveryException
      */
-    public function discoverFromIssuer(ClientInterface $httpClient, Repository $cache, int $cacheMinutes): void
+    public function discoverFromIssuer(ClientInterface $httpClient, Repository $cache, int $cacheSeconds): void
     {
         try {
             $cacheKey = 'oidc-discovery::' . $this->issuer;
-            $discoveredSettings = $cache->remember($cacheKey, $cacheMinutes * 60, function () use ($httpClient) {
+            $discoveredSettings = $cache->remember($cacheKey, $cacheSeconds, function () use ($httpClient) {
                 return $this->loadSettingsFromIssuerDiscovery($httpClient);
             });
             $this->applySettingsFromArray($discoveredSettings);
