@@ -106,7 +106,8 @@ class OidcService
         // Run discovery
         if ($config['discover'] ?? false) {
             try {
-                $settings->discoverFromIssuer($this->http->buildClient(5), Cache::store(null), 15);
+                $cacheDuration = $this->config()['jwks_cache_duration_seconds'] ?? 900;
+                $settings->discoverFromIssuer($this->http->buildClient(5), Cache::store(null), $cacheDuration);
             } catch (OidcIssuerDiscoveryException $exception) {
                 throw new OidcException('OIDC Discovery Error: ' . $exception->getMessage());
             }
