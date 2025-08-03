@@ -1,5 +1,10 @@
 # BookStack
 
+> [!IMPORTANT]  
+> This fork should add the ability to configure the caching duration for the OIDC discovery thing. It uses the `oidc_jwks_cache_duration_seconds` environment varianle for that. It only exists because the caching time seems to be too long for Zitadel and their key rotation thing.
+> 
+> I haven't tested it yet, therefore, I'm not sure if this will help with the problem and the temporary `ID token validation failed with error: Token signature could not be validated using the provided keys` error (after some time it just works again or when I clear the cache manually as it seems).
+
 [![GitHub release](https://img.shields.io/github/release/BookStackApp/BookStack.svg)](https://github.com/BookStackApp/BookStack/releases/latest)
 [![license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/BookStackApp/BookStack/blob/development/LICENSE)
 [![Crowdin](https://badges.crowdin.net/bookstack/localized.svg)](https://crowdin.com/project/bookstack)
